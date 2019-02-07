@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //Go back to main menu - load start scene
-public class BackToMainMenu : MonoBehaviour {
-
+public class BackToMainMenu : MonoBehaviour
+{
     private bool pressingButton = false;
 
     // Update is called once per frame
-    void Update () {
-        
+    void Update()
+    {
         if (pressingButton)
         {
             if (Input.GetMouseButtonDown(0))
                 SceneManager.LoadScene("StartMenu");
         }
-	}
+    }
 
     private void OnMouseEnter()
     {

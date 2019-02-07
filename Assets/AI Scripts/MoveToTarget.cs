@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 
 //Allows AI cars to move around the track by hitting the checkpoints
-public class MoveToTarget : MonoBehaviour {
+public class MoveToTarget : MonoBehaviour
+{
     private GameObject[] _targets = new GameObject[3];
     private int _destPoint = 0;
     private NavMeshAgent _agent;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         _agent = GetComponent<NavMeshAgent>();
 
         _targets[0] = GameObject.Find("Checkpoint");
@@ -19,10 +21,11 @@ public class MoveToTarget : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
             GoToNextPoint();
-	}
+    }
 
     private void GoToNextPoint()
     {

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Class to hold all the attributes of the car
-public class LapCounter : MonoBehaviour {
+public class LapCounter : MonoBehaviour
+{
     private bool _passedPoint1 = false, _passedPoint2 = false, _passedPoint3 = false;
+
     public bool PassedPoint1
     {
         get

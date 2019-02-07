@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Change colour of button when mouse is hovering over it
-public class ChangeColourMouseHover : MonoBehaviour {
-
+public class ChangeColourMouseHover : MonoBehaviour
+{
     // Use this for initialization
     void Start()
     {

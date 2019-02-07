@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //Start game by loading first scene
-public class StartButton : MonoBehaviour {
-
+public class StartButton : MonoBehaviour
+{
     private bool pressingButton = false;
-    
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         if (pressingButton)
         {

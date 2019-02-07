@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Persist.unity
+    guid: 68e5795efe92d164fa051261344f72c4
+  - enabled: 1
     path: Assets/Menu Interaction/StartMenu.unity
     guid: eb8352722ca0c1a409eaa6ef9458ab56
   - enabled: 1
     path: Assets/RaceTrack1.unity
     guid: b98661b44e809804b8012062f5c1f48b
+  - enabled: 1
+    path: Assets/Menu Interaction/GameOverScene.unity
+    guid: 3e228c6f795671543b5c94bb4e883f35
