@@ -2,25 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Allows player input to drive around the track
 public class PlayerMovement : MonoBehaviour
 {
-    private float _speed = 3.0f, _horizontalInput = 0.0f, _verticalInput = 0.0f;
-    private Rigidbody _rigidbody;
+    private WinLossDetection _countdownObject;
 
-    // Use this for initialization
-    void Start()
+    private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        _countdownObject = GameObject.Find("PositionStorage").GetComponent<WinLossDetection>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        _horizontalInput = Input.GetAxis("Horizontal");
-        _verticalInput = Input.GetAxis("Vertical");
-
-        _rigidbody.transform.Rotate(new Vector3(0.0f, _horizontalInput * _speed, 0.0f));
-        _rigidbody.transform.Translate(new Vector3(0.0f, 0.0f, _verticalInput) * _speed * Time.deltaTime);
+        if (_countdownObject.Countdown < 0)
+        {
+            gameObject.GetComponent<CarController>().MotorInput = Input.GetAxis("Vertical");
+            gameObject.GetComponent<CarController>().SteeringInput = Input.GetAxis("Horizontal");
+        }
     }
 }

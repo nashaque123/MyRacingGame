@@ -9,12 +9,25 @@ public class WinLossDetection : MonoBehaviour
     private int _finalPosition;
     private int _noOfCars;
     private GUIStyle _style = new GUIStyle();
+    private GUIStyle _countdownStyle = new GUIStyle();
+    private float _countdown = 3.0f;
+
+    public float Countdown
+    {
+        get
+        {
+            return _countdown;
+        }
+    }
 
     // Use this for initialization
     private void Start()
     {
         _style.fontSize = 19;
         _style.normal.textColor = Color.magenta;
+
+        _countdownStyle.fontSize = 50;
+        _countdownStyle.normal.textColor = Color.magenta;
 
         DontDestroyOnLoad(gameObject);
     }
@@ -27,17 +40,22 @@ public class WinLossDetection : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         if (EndCondition())
             SceneManager.LoadScene("GameOverScene");
+
+        if (SceneManager.GetActiveScene().name == "RaceTrack1")
+            _countdown -= Time.deltaTime;
     }
 
     private void OnGUI()
     {
         if (SceneManager.GetActiveScene().name == "RaceTrack1")
         {
+            if (_countdown > 0)
+                GUI.Label(new Rect((Screen.width / 2) - 25, (Screen.height / 2) - 25, 10, 10), Mathf.RoundToInt(_countdown).ToString(), _countdownStyle);
+
             _player = GameObject.Find("Player");
             _noOfCars = _player.GetComponent<PositionCheck>().NoOfCars;
 
@@ -57,6 +75,7 @@ public class WinLossDetection : MonoBehaviour
             if (_player.GetComponent<LapCounter>().LapNumber == 4)
             {
                 _finalPosition = _player.GetComponent<PositionCheck>().Position;
+                _countdown = 3;
                 return true;
             }
         }

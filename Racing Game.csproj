@@ -233,18 +233,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AI Scripts\MoveToTarget.cs" />
-    <Compile Include="Assets\Game Cycling\PositionPassToFinalScene.cs" />
     <Compile Include="Assets\Game Cycling\StartGame.cs" />
     <Compile Include="Assets\Game Cycling\WinLossDetection.cs" />
     <Compile Include="Assets\Laps+Checkpoints Scripts\FirstCheckpoint.cs" />
     <Compile Include="Assets\Laps+Checkpoints Scripts\LapNumberIncrease.cs" />
     <Compile Include="Assets\Laps+Checkpoints Scripts\SecondCheckpoint.cs" />
     <Compile Include="Assets\Laps+Checkpoints Scripts\ThirdCheckpoint.cs" />
-    <Compile Include="Assets\Menu Interaction\BackToMainMenu.cs" />
-    <Compile Include="Assets\Menu Interaction\ChangeColourMouseHover.cs" />
     <Compile Include="Assets\Menu Interaction\FinishedPosition.cs" />
-    <Compile Include="Assets\Menu Interaction\QuitButton.cs" />
-    <Compile Include="Assets\Menu Interaction\StartButton.cs" />
+    <Compile Include="Assets\Menu Interaction\NavigateEndMenu.cs" />
+    <Compile Include="Assets\Menu Interaction\NavigateStartMenu.cs" />
+    <Compile Include="Assets\Parent Car Scripts\Axle.cs" />
+    <Compile Include="Assets\Parent Car Scripts\CarController.cs" />
     <Compile Include="Assets\Parent Car Scripts\LapCounter.cs" />
     <Compile Include="Assets\Player Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Player Scripts\PositionCheck.cs" />

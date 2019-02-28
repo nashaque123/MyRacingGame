@@ -9,11 +9,13 @@ public class MoveToTarget : MonoBehaviour
     private GameObject[] _targets = new GameObject[3];
     private int _destPoint = 0;
     private NavMeshAgent _agent;
+    private WinLossDetection _countdownObject;
 
     // Use this for initialization
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _countdownObject = GameObject.Find("PositionStorage").GetComponent<WinLossDetection>();
 
         _targets[0] = GameObject.Find("Checkpoint");
         _targets[1] = GameObject.Find("Checkpoint (1)");
@@ -21,8 +23,13 @@ public class MoveToTarget : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if (_countdownObject.Countdown > 0)
+            _agent.isStopped = true;
+        else
+            _agent.isStopped = false;
+
         if (!_agent.pathPending && _agent.remainingDistance < 0.5f)
             GoToNextPoint();
     }
