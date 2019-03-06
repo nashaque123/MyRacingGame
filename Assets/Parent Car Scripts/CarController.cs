@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     private Axle[] _axles = new Axle[2];
-    private readonly int _maxMotorTorque = 80, _maxSteeringAngle = 13;
+    private int _maxMotorTorque = 80, _maxSteeringAngle = 13;
     private float _motorInput, _steeringInput;
     private Rigidbody _rb;
     private float _speed;
@@ -51,6 +51,9 @@ public class CarController : MonoBehaviour
         _style.fontSize = 19;
         _style.normal.textColor = Color.magenta;
 
+        _maxMotorTorque = Mathf.RoundToInt(_maxMotorTorque * PlayerPrefs.GetFloat("Torque setting"));
+        _maxSteeringAngle = Mathf.RoundToInt(_maxSteeringAngle * PlayerPrefs.GetFloat("Angle setting"));
+
         Transform wheelsList = gameObject.transform.Find("Wheels");
 
         _axles[0] = new Axle
@@ -68,6 +71,8 @@ public class CarController : MonoBehaviour
         };
 
         _rb = GetComponent<Rigidbody>();
+
+        Debug.Log(_maxMotorTorque + " " + _maxSteeringAngle);
     }
 
     private void FixedUpdate()
