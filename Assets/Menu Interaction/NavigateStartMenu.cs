@@ -62,33 +62,33 @@ public class NavigateStartMenu : MonoBehaviour
             MoveToNextButton();
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
-            if (_buttons[_currentButton].name == "Start")
+            if (_currentButton == 0)
                 NextListOfOptions(2, 4);
-            else if (_buttons[_currentButton].name == "Quit")
+            else if (_currentButton == 1)
                 Application.Quit();
-            else if (_buttons[_currentButton].name == "Handling")
+            else if (_currentButton == 2)
             {
                 PlayerPrefs.SetFloat("Torque setting", 0.8f);
                 PlayerPrefs.SetFloat("Angle setting", 1.2f);
                 NextListOfOptions(5, 7);
             }
-            else if (_buttons[_currentButton].name == "Balanced")
+            else if (_currentButton == 3)
             {
                 PlayerPrefs.SetFloat("Torque setting", 1.0f);
                 PlayerPrefs.SetFloat("Angle setting", 1.0f);
                 NextListOfOptions(5, 7);
             }
-            else if (_buttons[_currentButton].name == "Speed")
+            else if (_currentButton == 4)
             {
                 PlayerPrefs.SetFloat("Torque setting", 1.2f);
                 PlayerPrefs.SetFloat("Angle setting", 0.8f);
                 NextListOfOptions(5, 7);
             }
-            else if (_buttons[_currentButton].name == "Oval")
+            else if (_currentButton == 5)
                 SceneManager.LoadScene("OvalRaceTrack");
-            else if (_buttons[_currentButton].name == "Figure8")
+            else if (_currentButton == 6)
                 SceneManager.LoadScene("FigureEightTrack");
-            else if (_buttons[_currentButton].name == "Track1")
+            else if (_currentButton == 7)
                 SceneManager.LoadScene("RaceTrack1");
         }
     }

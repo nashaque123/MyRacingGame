@@ -28,9 +28,9 @@ public class NavigateEndMenu : MonoBehaviour
             MoveToNextButton();
         else if (Input.GetAxis("Submit") == 1)
         {
-            if (_buttons[_currentButton].name == "Restart")
+            if (_currentButton == 0)
                 SceneManager.LoadScene("StartMenu");
-            else if (_buttons[_currentButton].name == "Quit")
+            else if (_currentButton == 1)
                 Application.Quit();
         }
     }

@@ -8,7 +8,7 @@ public class CarController : MonoBehaviour
     private int _maxMotorTorque = 80, _maxSteeringAngle = 13;
     private float _motorInput, _steeringInput;
     private Rigidbody _rb;
-    private float _speed;
+    private float _currentSpeed;
     private int _health = 100;
     private GUIStyle _style = new GUIStyle();
 
@@ -71,8 +71,6 @@ public class CarController : MonoBehaviour
         };
 
         _rb = GetComponent<Rigidbody>();
-
-        Debug.Log(_maxMotorTorque + " " + _maxSteeringAngle);
     }
 
     private void FixedUpdate()
@@ -92,7 +90,7 @@ public class CarController : MonoBehaviour
             }
         }
 
-        _speed = 3.0f * _rb.velocity.magnitude * 3.6f * 2.237f;
+        _currentSpeed = 3.0f * _rb.velocity.magnitude * 3.6f * 2.237f;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -103,12 +101,12 @@ public class CarController : MonoBehaviour
 
     private void TakeDamage()
     {
-        _health -= Mathf.RoundToInt(_speed / 15.0f);
+        _health -= Mathf.RoundToInt(_currentSpeed / 15.0f);
     }
 
     private void OnGUI()
     {
         GUI.Label(new Rect(20, (Screen.height - 20), 100, 20), "Health: " + _health.ToString(), _style);
-        GUI.Label(new Rect((Screen.width - 150), (Screen.height - 20), 100, 20), "Speed: " + Mathf.RoundToInt(_speed).ToString(), _style);
+        GUI.Label(new Rect((Screen.width - 150), (Screen.height - 20), 100, 20), "Speed: " + Mathf.RoundToInt(_currentSpeed).ToString(), _style);
     }
 }

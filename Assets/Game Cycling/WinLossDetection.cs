@@ -91,7 +91,7 @@ public class WinLossDetection : MonoBehaviour
         return false;
     }
 
-    private void ResetTimers()
+    public void ResetTimers()
     {
         _raceCountdown = 120.0f;
         _startCountdown = 3.0f;
