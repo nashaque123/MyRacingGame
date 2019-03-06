@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 44733221}
   m_Layer: 0
   m_Name: Barrier (4)
-  m_TagString: Untagged
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 613731621}
   m_Layer: 0
   m_Name: Barrier (3)
-  m_TagString: Untagged
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 631312430}
   m_Layer: 0
   m_Name: Barrier (1)
-  m_TagString: Untagged
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -1200,7 +1200,7 @@ GameObject:
   - component: {fileID: 754334156}
   m_Layer: 0
   m_Name: Barrier (5)
-  m_TagString: Untagged
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -1413,7 +1413,7 @@ GameObject:
   - component: {fileID: 869657406}
   m_Layer: 0
   m_Name: Barrier
-  m_TagString: Untagged
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -1805,7 +1805,7 @@ GameObject:
   - component: {fileID: 939804305}
   m_Layer: 0
   m_Name: Barrier (2)
-  m_TagString: Untagged
+  m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8

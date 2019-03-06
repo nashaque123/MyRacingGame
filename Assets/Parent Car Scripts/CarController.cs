@@ -7,17 +7,21 @@ public class CarController : MonoBehaviour
     private Axle[] _axles = new Axle[2];
     private readonly int _maxMotorTorque = 80, _maxSteeringAngle = 13;
     private float _motorInput, _steeringInput;
+    private Rigidbody _rb;
+    private float _speed;
+    private int _health = 100;
+    private GUIStyle _style = new GUIStyle();
 
     public float MotorInput
     {
         get
         {
-            return _motorInput * _maxMotorTorque;
+            return _motorInput * _maxMotorTorque * (_health / 100.0f);
         }
 
         set
         {
-            _motorInput = value * _maxMotorTorque;
+            _motorInput = value * _maxMotorTorque * (_health / 100.0f);
         }
     }
 
@@ -34,8 +38,19 @@ public class CarController : MonoBehaviour
         }
     }
 
+    public int Health
+    {
+        get
+        {
+            return _health;
+        }
+    }
+
     private void Start()
     {
+        _style.fontSize = 19;
+        _style.normal.textColor = Color.magenta;
+
         Transform wheelsList = gameObject.transform.Find("Wheels");
 
         _axles[0] = new Axle
@@ -51,6 +66,8 @@ public class CarController : MonoBehaviour
             LeftWheel = wheelsList.Find("Back Left").GetComponent<WheelCollider>(),
             RightWheel = wheelsList.Find("Back Right").GetComponent<WheelCollider>()
         };
+
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -69,5 +86,24 @@ public class CarController : MonoBehaviour
                 _axles[i].RightWheel.motorTorque = _motorInput;
             }
         }
+
+        _speed = 3.0f * _rb.velocity.magnitude * 3.6f * 2.237f;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Barrier" || collision.gameObject.tag == "Car")
+            TakeDamage();
+    }
+
+    private void TakeDamage()
+    {
+        _health -= Mathf.RoundToInt(_speed / 15.0f);
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(20, (Screen.height - 20), 100, 20), "Health: " + _health.ToString(), _style);
+        GUI.Label(new Rect((Screen.width - 150), (Screen.height - 20), 100, 20), "Speed: " + Mathf.RoundToInt(_speed).ToString(), _style);
     }
 }

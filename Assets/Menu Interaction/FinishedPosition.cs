@@ -11,6 +11,13 @@ public class FinishedPosition : MonoBehaviour
     void Start()
     {
         _finishedPosition = GameObject.Find("PositionStorage").GetComponent<WinLossDetection>().Position;
-        GetComponent<Text>().text = "Well done! You finished in position " + _finishedPosition.ToString();
+
+        if (_finishedPosition == 0)
+            GetComponent<Text>().text = "Oh no! You ran out of time! DNF!!!! :(";
+        else if (_finishedPosition == -1)
+            GetComponent<Text>().text = "Oh no! You destroyed your car! DNF! :(";
+        else
+            GetComponent<Text>().text = "Well done! You finished in position " + _finishedPosition.ToString();
+
     }
 }
