@@ -11,6 +11,7 @@ public class WinLossDetection : MonoBehaviour
     private GUIStyle _style = new GUIStyle();
     private GUIStyle _countdownStyle = new GUIStyle();
     private float _countdown = 3.0f;
+    private HashSet<string> _trackNames = new HashSet<string>();
 
     public float Countdown
     {
@@ -30,6 +31,10 @@ public class WinLossDetection : MonoBehaviour
         _countdownStyle.normal.textColor = Color.magenta;
 
         DontDestroyOnLoad(gameObject);
+
+        _trackNames.Add("RaceTrack1");
+        _trackNames.Add("OvalRaceTrack");
+        _trackNames.Add("FigureEightTrack");
     }
 
     public int Position
@@ -45,13 +50,13 @@ public class WinLossDetection : MonoBehaviour
         if (EndCondition())
             SceneManager.LoadScene("GameOverScene");
 
-        if (SceneManager.GetActiveScene().name == "RaceTrack1")
+        if (_trackNames.Contains(SceneManager.GetActiveScene().name))
             _countdown -= Time.deltaTime;
     }
 
     private void OnGUI()
     {
-        if (SceneManager.GetActiveScene().name == "RaceTrack1")
+        if (_trackNames.Contains(SceneManager.GetActiveScene().name))
         {
             if (_countdown > 0)
                 GUI.Label(new Rect((Screen.width / 2) - 25, (Screen.height / 2) - 25, 10, 10), Mathf.RoundToInt(_countdown).ToString(), _countdownStyle);
@@ -68,7 +73,7 @@ public class WinLossDetection : MonoBehaviour
 
     private bool EndCondition()
     {
-        if (SceneManager.GetActiveScene().name == "RaceTrack1")
+        if (_trackNames.Contains(SceneManager.GetActiveScene().name))
         {
             _player = GameObject.Find("Player");
 

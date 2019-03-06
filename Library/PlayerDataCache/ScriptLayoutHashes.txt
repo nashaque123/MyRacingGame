@@ -5,6 +5,7 @@ SceneListBegin?
 Assets/Game Cycling/Persist.unity
 Assets/Menu Interaction/StartMenu.unity
 Assets/RaceTrack1.unity
+Assets/OvalRaceTrack.unity
 Assets/Menu Interaction/GameOverScene.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PositionCheck
