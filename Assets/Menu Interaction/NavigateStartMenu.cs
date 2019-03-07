@@ -91,6 +91,13 @@ public class NavigateStartMenu : MonoBehaviour
             else if (_currentButton == 7)
                 SceneManager.LoadScene("RaceTrack1");
         }
+        else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+        {          
+            if (_currentButton == 2 || _currentButton == 3 || _currentButton == 4)
+                NextListOfOptions(0, 1);
+            else if (_currentButton == 5 || _currentButton == 6 || _currentButton == 7)
+                NextListOfOptions(2, 4);
+        }
     }
 
     private void MoveToNextButton()
@@ -117,6 +124,7 @@ public class NavigateStartMenu : MonoBehaviour
 
     private void NextListOfOptions(int firstButton, int lastButton)
     {
+        _buttons[_currentButton].color = Color.white;
         _firstButton = firstButton;
         _lastButton = lastButton;
         _buttons[_firstButton].color = Color.magenta;

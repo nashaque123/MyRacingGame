@@ -8,6 +8,7 @@ public class StartGame : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Cursor.visible = false;
         SceneManager.LoadScene("StartMenu");
     }
 }

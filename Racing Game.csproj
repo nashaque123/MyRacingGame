@@ -242,10 +242,10 @@
     <Compile Include="Assets\Menu Interaction\FinishedPosition.cs" />
     <Compile Include="Assets\Menu Interaction\NavigateEndMenu.cs" />
     <Compile Include="Assets\Menu Interaction\NavigateStartMenu.cs" />
+    <Compile Include="Assets\Menu Interaction\PauseMenu.cs" />
     <Compile Include="Assets\Parent Car Scripts\Axle.cs" />
     <Compile Include="Assets\Parent Car Scripts\CarController.cs" />
     <Compile Include="Assets\Parent Car Scripts\LapCounter.cs" />
-    <Compile Include="Assets\PauseMenu.cs" />
     <Compile Include="Assets\Player Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Player Scripts\PositionCheck.cs" />
   </ItemGroup>

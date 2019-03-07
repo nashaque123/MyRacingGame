@@ -106,7 +106,7 @@ public class CarController : MonoBehaviour
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(20, (Screen.height - 20), 100, 20), "Health: " + _health.ToString(), _style);
-        GUI.Label(new Rect((Screen.width - 150), (Screen.height - 20), 100, 20), "Speed: " + Mathf.RoundToInt(_currentSpeed).ToString(), _style);
+        GUI.Label(new Rect(20, (Screen.height - 60), 100, 20), "Health: " + _health.ToString(), _style);
+        GUI.Label(new Rect((Screen.width - 150), (Screen.height - 60), 100, 20), "Speed: " + Mathf.RoundToInt(_currentSpeed).ToString(), _style);
     }
 }
