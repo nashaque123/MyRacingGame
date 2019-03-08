@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Master script for each race
 public class WinLossDetection : MonoBehaviour
 {
-    private GameObject _player;
+    private GameObject _player; //Only find in necessary functions as does not exist in every scene
     private int _finalPosition;
     private int _noOfCars;
     private GUIStyle _style = new GUIStyle();
@@ -22,22 +23,6 @@ public class WinLossDetection : MonoBehaviour
         }
     }
 
-    // Use this for initialization
-    private void Start()
-    {
-        _style.fontSize = 19;
-        _style.normal.textColor = Color.magenta;
-
-        _countdownStyle.fontSize = 50;
-        _countdownStyle.normal.textColor = Color.magenta;
-
-        DontDestroyOnLoad(gameObject);
-
-        _trackNames.Add("RaceTrack1");
-        _trackNames.Add("OvalRaceTrack");
-        _trackNames.Add("FigureEightTrack");
-    }
-
     public int Position
     {
         get
@@ -46,46 +31,59 @@ public class WinLossDetection : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    // Use this for initialization
+    private void Start()
     {
-        if (EndCondition())
-        {
-            ResetTimers();
-            SceneManager.LoadScene("GameOverScene");
-        }
+        DontDestroyOnLoad(gameObject);
 
+        _style.fontSize = 19;
+        _style.normal.textColor = Color.magenta;
+        _countdownStyle.fontSize = 50;
+        _countdownStyle.normal.textColor = Color.magenta;
+
+        _trackNames.Add("RaceTrack1");
+        _trackNames.Add("OvalRaceTrack");
+        _trackNames.Add("FigureEightTrack");
+    }
+
+    private void FixedUpdate()
+    {        
+        //If player is in a race then start timers and check if race has finished
         if (_trackNames.Contains(SceneManager.GetActiveScene().name))
         {
             _startCountdown -= Time.deltaTime;
 
             if (_startCountdown <= 0)
                 _raceCountdown -= Time.deltaTime;
+
+            if (EndCondition())
+            {
+                ResetTimers();
+                SceneManager.LoadScene("GameOverScene");
+            }
         }
     }
 
     private bool EndCondition()
     {
-        if (_trackNames.Contains(SceneManager.GetActiveScene().name))
+        _player = GameObject.Find("Player");
+
+        if (_player.GetComponent<LapCounter>().LapNumber == 4)
         {
-            _player = GameObject.Find("Player");
+            _finalPosition = _player.GetComponent<PositionCheck>().Position;
+            return true;
+        }
 
-            if (_player.GetComponent<LapCounter>().LapNumber == 4)
-            {
-                _finalPosition = _player.GetComponent<PositionCheck>().Position;
-                return true;
-            }
+        if (_raceCountdown <= 0)
+        {
+            _finalPosition = 0;
+            return true;
+        }
 
-            if (_raceCountdown <= 0)
-            {
-                _finalPosition = 0;
-                return true;
-            }
-
-            if (_player.GetComponent<CarController>().Health <= 0)
-            {
-                _finalPosition = -1;
-                return true;
-            }
+        if (_player.GetComponent<CarController>().Health <= 0)
+        {
+            _finalPosition = -1;
+            return true;
         }
 
         return false;

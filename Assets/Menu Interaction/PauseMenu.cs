@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//Allows the user to pause the game during a race
 public class PauseMenu : MonoBehaviour
 {
     private bool _gamePaused = false;

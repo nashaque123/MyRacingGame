@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//Allows player to navigate through the end menu to play again or quit
 public class NavigateEndMenu : MonoBehaviour
 {
     private Image[] _buttons = new Image[2];

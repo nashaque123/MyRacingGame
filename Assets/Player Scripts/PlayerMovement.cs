@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Allows user to control their vehicle by using Unity Input Manager settings
 public class PlayerMovement : MonoBehaviour
 {
     private WinLossDetection _countdownObject;

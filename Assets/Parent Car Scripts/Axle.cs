@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Allows car to move properly using the wheel colliders
 public class Axle
 {
     private WheelCollider _leftWheel;

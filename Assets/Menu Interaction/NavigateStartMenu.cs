@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//Navigate through the start menu by displaying the correct buttons for the player to choose from
 public class NavigateStartMenu : MonoBehaviour
 {
     private Image[] _buttons = new Image[8];

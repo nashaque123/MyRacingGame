@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Display the players final position 
 public class FinishedPosition : MonoBehaviour
 {
     private int _finishedPosition;

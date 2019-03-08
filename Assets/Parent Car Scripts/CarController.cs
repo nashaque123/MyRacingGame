@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Class to hold all the attributes of the car
 public class CarController : MonoBehaviour
 {
     private Axle[] _axles = new Axle[2];
@@ -21,7 +22,7 @@ public class CarController : MonoBehaviour
 
         set
         {
-            _motorInput = value * _maxMotorTorque * (_health / 100.0f);
+            _motorInput = value * _maxMotorTorque;
         }
     }
 
@@ -51,6 +52,7 @@ public class CarController : MonoBehaviour
         _style.fontSize = 19;
         _style.normal.textColor = Color.magenta;
 
+        //Use player prefs to setup car values according to their choice in the main menu
         _maxMotorTorque = Mathf.RoundToInt(_maxMotorTorque * PlayerPrefs.GetFloat("Torque setting"));
         _maxSteeringAngle = Mathf.RoundToInt(_maxSteeringAngle * PlayerPrefs.GetFloat("Angle setting"));
 
@@ -83,14 +85,15 @@ public class CarController : MonoBehaviour
                 _axles[i].RightWheel.steerAngle = _steeringInput;
             }
 
+            //Motor input affected by the health of the car
             if (_axles[i].Motor)
             {
-                _axles[i].LeftWheel.motorTorque = _motorInput;
-                _axles[i].RightWheel.motorTorque = _motorInput;
+                _axles[i].LeftWheel.motorTorque = _motorInput * (_health / 100.0f);
+                _axles[i].RightWheel.motorTorque = _motorInput * (_health / 100.0f);
             }
         }
 
-        _currentSpeed = 3.0f * _rb.velocity.magnitude * 3.6f * 2.237f;
+        _currentSpeed = 3.0f * (_rb.velocity.magnitude * 3.6f * 2.237f); //Measure in MPH - multiplied by 3 to look better for the player
     }
 
     private void OnCollisionEnter(Collision collision)

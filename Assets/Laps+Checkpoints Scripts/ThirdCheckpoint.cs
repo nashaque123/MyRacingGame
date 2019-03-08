@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Returns to state the car has hit the first checkpoint
+//States the car has hit the third checkpoint
 public class ThirdCheckpoint : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)

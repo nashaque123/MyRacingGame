@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-//Allows AI cars to move around the track by hitting the checkpoints
+//Allows AI cars to move around the track by following the checkpoints
 public class MoveToTarget : MonoBehaviour
 {
     private GameObject[] _targets = new GameObject[3];
